@@ -1,0 +1,14 @@
+<%- include("./partials/header") %>
+
+    <main>
+        <h3>Bienvenue! Veuillez choisir votre jeu ... </h3>
+        <div class="games-list">
+            <% for (const game of games) { %>
+                <div class="game <%= game.name %>"><a href="/game/<%= game.name %>">
+                        <%= game.title %>
+                    </a></div>
+                <% } %>
+        </div>
+    </main>
+
+    <%- include("./partials/footer") %>
