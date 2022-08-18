@@ -1,6 +1,6 @@
 const express = require('express');
 const router = require('./routers');
-const games = require('./data/games.json');
+const games = require('../data/games.json');
 
 const app = express();
 

@@ -9,4 +9,8 @@ router
     .route('/')
     .get(controllerHandler(controller.home));
 
+router
+    .route('/game/:gameName')
+    .get(controllerHandler(controller.game));
+
 module.exports = router;
