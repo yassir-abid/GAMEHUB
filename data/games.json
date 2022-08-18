@@ -1,18 +1,8 @@
 [
     {
-        "name": "test",
-        "title": "test"
-    },
-    {
-        "name": "test",
-        "title": "test"
-    },
-    {
-        "name": "test",
-        "title": "test"
-    },
-    {
-        "name": "test",
-        "title": "test"
+        "name": "diceRoller",
+        "title": "Dice Roller",
+        "cssFile": "diceRoller.css",
+        "jsFile": "diceRoller.js"
     }
 ]
