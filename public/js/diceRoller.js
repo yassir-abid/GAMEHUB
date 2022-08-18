@@ -1,5 +1,7 @@
 const game = {
 
+    nbDices: null,
+
     init() {
         const playBtn = document.getElementById('play');
 
@@ -10,16 +12,45 @@ const game = {
                 game.start();
             }
         });
+
+        game.diceNumberInput = document.getElementById('dice-number-input');
+        game.diceNumberInput.addEventListener('input', game.changeNumber);
+
+        const gameForm = document.getElementById('game-form');
+        gameForm.addEventListener('submit', game.play);
+
+        game.changeNumber();
     },
 
     start() {
         document.getElementById('welcome').classList.add('hidden');
         document.getElementById('app').classList.remove('hidden');
-        game.createDice();
+    },
+
+    changeNumber() {
+        const diceNumberElement = document.getElementById('dice-number');
+        game.nbDices = game.diceNumberInput.value;
+        diceNumberElement.textContent = game.nbDices;
+    },
+
+    play(event) {
+        event.preventDefault();
+        game.reset();
+        game.createAllDices('player');
+    },
+
+    reset() {
+        document.getElementById('player').innerHTML = '';
     },
 
     getRandom(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
+    createAllDices() {
+        for (let nbDice = 0; nbDice < Number(game.nbDices); nbDice += 1) {
+            game.createDice();
+        }
     },
 
     createDice() {

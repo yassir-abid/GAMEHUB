@@ -6,7 +6,16 @@
             <button id="play" class="btn" type="button">Jouer</button>
         </div>
         <div id="app" class="app hidden">
-            <div id="player" class="player"></div>
+            <div class="form">
+                <form id="game-form" class="game-form">
+                    <input type="range" id="dice-number-input" value="3" min="1" max="20">
+                    <span id="dice-number" class="dice-number"></span>
+                    <button class="btn">Valider le nombre de dés et lancer</button>
+                </form>
+            </div>
+            <div id="game" class="game-board">
+                <div id="player" class="player"></div>
+            </div>
         </div>
 
         <%- include("./partials/footer") %>
