@@ -13,6 +13,8 @@ const game = {
             }
         });
 
+        game.boards = document.querySelectorAll('.board');
+
         game.diceNumberInput = document.getElementById('dice-number-input');
         game.diceNumberInput.addEventListener('input', game.changeNumber);
 
@@ -37,30 +39,37 @@ const game = {
         event.preventDefault();
         game.reset();
         game.createAllDices('player');
+        setTimeout(game.dealerPlay, 3000);
     },
 
     reset() {
-        document.getElementById('player').innerHTML = '';
+        for (let boardIndex = 0; boardIndex < game.boards.length; boardIndex += 1) {
+            game.boards[boardIndex].innerHTML = '';
+        }
     },
 
     getRandom(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
 
-    createAllDices() {
+    createAllDices(player) {
         for (let nbDice = 0; nbDice < Number(game.nbDices); nbDice += 1) {
-            game.createDice();
+            game.createDice(player);
         }
     },
 
-    createDice() {
+    createDice(player) {
         const dice = document.createElement('div');
         const diceValue = game.getRandom(1, 6);
         const imageOffset = (diceValue - 1) * 100;
         dice.className = 'dice';
         dice.textContent = '';
         dice.style.backgroundPosition = `-${imageOffset}px 0`;
-        document.getElementById('player').appendChild(dice);
+        document.getElementById(player).appendChild(dice);
+    },
+
+    dealerPlay() {
+        game.createAllDices('dealer');
     },
 };
 
