@@ -40,6 +40,7 @@ const game = {
         game.reset();
         game.createAllDices('player');
         setTimeout(game.dealerPlay, 3000);
+        game.createCounter();
     },
 
     reset() {
@@ -70,6 +71,33 @@ const game = {
 
     dealerPlay() {
         game.createAllDices('dealer');
+    },
+
+    createCounter() {
+        game.counter = 3;
+
+        game.counterElement = document.createElement('div');
+        game.counterElement.textContent = game.counter;
+        game.counterElement.className = 'counter';
+        document.getElementById('app').appendChild(game.counterElement);
+
+        game.counterInterval = setInterval(game.countdown, 1000);
+    },
+
+    countdown() {
+        game.counter -= 1;
+
+        game.counterElement.textContent = game.counter;
+
+        if (game.counter === 0) {
+            game.deleteCounter();
+        }
+    },
+
+    deleteCounter() {
+        clearInterval(game.counterInterval);
+
+        game.counterElement.remove();
     },
 };
 
