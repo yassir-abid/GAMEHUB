@@ -2,6 +2,11 @@ const game = {
 
     nbDices: null,
 
+    victory: 0,
+    defeat: 0,
+
+    ingame: false,
+
     init() {
         const playBtn = document.getElementById('play');
 
@@ -37,10 +42,14 @@ const game = {
 
     play(event) {
         event.preventDefault();
-        game.reset();
-        game.createAllDices('player');
-        setTimeout(game.dealerPlay, 3000);
-        game.createCounter();
+
+        if (!game.ingame) {
+            game.ingame = true;
+            game.reset();
+            game.playerScore = game.createAllDices('player');
+            setTimeout(game.dealerPlay, 3000);
+            game.createCounter();
+        }
     },
 
     reset() {
@@ -54,9 +63,14 @@ const game = {
     },
 
     createAllDices(player) {
+        let score = 0;
+
         for (let nbDice = 0; nbDice < Number(game.nbDices); nbDice += 1) {
-            game.createDice(player);
+            const diceScore = game.createDice(player);
+            score += diceScore;
         }
+
+        return score;
     },
 
     createDice(player) {
@@ -67,10 +81,32 @@ const game = {
         dice.textContent = '';
         dice.style.backgroundPosition = `-${imageOffset}px 0`;
         document.getElementById(player).appendChild(dice);
+
+        return diceValue;
     },
 
     dealerPlay() {
-        game.createAllDices('dealer');
+        const dealerScore = game.createAllDices('dealer');
+
+        if (dealerScore > game.playerScore) {
+            game.defeat += 1;
+        } else if (dealerScore < game.playerScore) {
+            game.victory += 1;
+        }
+
+        game.displayResult('player', game.victory);
+        game.displayResult('dealer', game.defeat);
+
+        game.ingame = false;
+    },
+
+    displayResult(board, counter) {
+        const result = document.createElement('div');
+
+        result.className = 'result';
+        result.textContent = counter;
+
+        document.getElementById(board).appendChild(result);
     },
 
     createCounter() {
