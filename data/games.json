@@ -6,15 +6,21 @@
         "jsFile": "diceRoller.js"
     },
     {
-        "name": "rpg",
-        "title": "Jeu RPG",
-        "cssFile":"rpg.css", 
-        "jsFile": "rpg.js"
+        "name": "simon",
+        "title": "Simon Says",
+        "cssFile": "simon.css",
+        "jsFile": "simon.js"
     },
     {
         "name": "invader",
         "title": "Invader",
         "cssFile":"invader.css", 
         "jsFile": "invader.js"
+    },
+    {
+        "name": "rpg",
+        "title": "Jeu RPG",
+        "cssFile":"rpg.css", 
+        "jsFile": "rpg.js"
     }
 ]
