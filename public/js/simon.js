@@ -27,8 +27,7 @@ const game = {
                     if (game.indice < game.sequence.length - 1) {
                         game.indice += 1;
                     } else {
-                        game.showMessage('Gagné!');
-                        game.isAllowedToPlay = false;
+                        game.nextMove();
                     }
                 } else {
                     game.gameOver();
@@ -44,6 +43,13 @@ const game = {
             game.sequence.push(game.colors[random]);
         }
 
+        game.simonSays(game.sequence);
+    },
+
+    nextMove: () => {
+        const random = Math.floor(Math.random() * 4);
+        game.sequence.push(game.colors[random]);
+        game.indice = 0;
         game.simonSays(game.sequence);
     },
 
