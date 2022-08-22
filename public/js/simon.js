@@ -2,6 +2,7 @@ const game = {
     colors: ['red', 'green', 'blue', 'yellow'],
 
     sequence: [],
+    timer: undefined,
     indice: 0,
     isAllowedToPlay: false,
 
@@ -22,10 +23,12 @@ const game = {
                 if (!game.isAllowedToPlay) {
                     return;
                 }
+                clearTimeout(game.timer);
                 game.bumpCell(color);
                 if (color === game.sequence[game.indice]) {
                     if (game.indice < game.sequence.length - 1) {
                         game.indice += 1;
+                        game.timer = setTimeout(game.gameOver, 5000);
                     } else {
                         game.nextMove();
                     }
@@ -62,6 +65,7 @@ const game = {
         } else {
             game.isAllowedToPlay = true;
             game.showMessage('Reproduisez la séquence');
+            game.timer = setTimeout(game.gameOver, 5000);
         }
     },
 
