@@ -14,6 +14,7 @@ const game = {
     },
 
     init: () => {
+        game.listenKeyboardEvents();
         game.drawBoard();
     },
 
@@ -47,6 +48,69 @@ const game = {
                 row.appendChild(cell);
             }
         }
+    },
+
+    listenKeyboardEvents: () => {
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'ArrowLeft') {
+                game.turnLeft();
+            } else if (event.key === 'ArrowRight') {
+                game.turnRight();
+            } else if (event.key === 'ArrowUp') {
+                game.moveForward();
+            }
+        });
+    },
+
+    turnLeft: () => {
+        if (game.player.direction === 'up') {
+            game.player.direction = 'left';
+        } else if (game.player.direction === 'right') {
+            game.player.direction = 'up';
+        } else if (game.player.direction === 'down') {
+            game.player.direction = 'right';
+        } else if (game.player.direction === 'left') {
+            game.player.direction = 'down';
+        }
+
+        game.redrawBoard();
+    },
+
+    turnRight: () => {
+        if (game.player.direction === 'up') {
+            game.player.direction = 'right';
+        } else if (game.player.direction === 'right') {
+            game.player.direction = 'down';
+        } else if (game.player.direction === 'down') {
+            game.player.direction = 'left';
+        } else if (game.player.direction === 'left') {
+            game.player.direction = 'up';
+        }
+
+        game.redrawBoard();
+    },
+
+    moveForward: () => {
+        if (game.player.direction === 'up' && game.player.y > 0) {
+            game.player.y -= 1;
+        } else if (game.player.direction === 'right' && game.player.x < 5) {
+            game.player.x += 1;
+        } else if (game.player.direction === 'down' && game.player.y < 3) {
+            game.player.y += 1;
+        } else if (game.player.direction === 'left' && game.player.x > 0) {
+            game.player.x -= 1;
+        }
+
+        game.redrawBoard();
+    },
+
+    redrawBoard: () => {
+        game.clearBoard();
+        game.drawBoard();
+    },
+
+    clearBoard: () => {
+        game.boardDiv.innerHTML = '';
     },
 
 };
