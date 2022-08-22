@@ -9,6 +9,7 @@ const game = {
     init: () => {
         game.drawCells();
         document.getElementById('play').addEventListener('click', game.newGame);
+        document.getElementById('replay').addEventListener('click', game.newGame);
     },
 
     drawCells: () => {
@@ -78,6 +79,7 @@ const game = {
 
     showMessage: (message) => {
         document.getElementById('welcome').classList.add('hidden');
+        document.getElementById('replay').classList.add('hidden');
         document.getElementById('message').classList.remove('hidden');
         document.getElementById('message').innerHTML = message;
     },
@@ -85,6 +87,7 @@ const game = {
     gameOver: () => {
         game.isAllowedToPlay = false;
         game.showMessage(`Partie terminée. Votre score: ${game.sequence.length}`);
+        document.getElementById('replay').classList.remove('hidden');
         game.sequence = [];
     },
 };
