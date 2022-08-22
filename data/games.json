@@ -10,5 +10,11 @@
         "title": "Jeu RPG",
         "cssFile":"rpg.css", 
         "jsFile": "rpg.js"
+    },
+    {
+        "name": "invader",
+        "title": "Invader",
+        "cssFile":"invader.css", 
+        "jsFile": "invader.js"
     }
 ]
