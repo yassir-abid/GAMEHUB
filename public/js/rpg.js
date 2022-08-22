@@ -18,8 +18,30 @@ const game = {
     gameOver: false,
 
     init: () => {
+        const playBtn = document.getElementById('play');
+
+        playBtn.addEventListener('click', game.start);
+        document.addEventListener('keyup', (event) => {
+            if (event.code === 'Space') {
+                game.start();
+            }
+        });
+
+        const replayBtn = document.getElementById('newGame');
+        replayBtn.addEventListener('click', game.replay);
+        document.addEventListener('keyup', (event) => {
+            if (event.code === 'Space') {
+                game.replay();
+            }
+        });
+
         game.listenKeyboardEvents();
         game.drawBoard();
+    },
+
+    start() {
+        document.getElementById('welcome').classList.add('hidden');
+        document.getElementById('app').classList.remove('hidden');
     },
 
     drawBoard: () => {
@@ -140,6 +162,7 @@ const game = {
         if (game.player.x === game.targetCell.x && game.player.y === game.targetCell.y) {
             setTimeout(game.displayResult, 100);
             game.gameOver = true;
+            document.getElementById('replay').classList.remove('hidden');
         }
     },
 
@@ -150,6 +173,16 @@ const game = {
         result.textContent = `Gagné en ${game.numberOfMoves} coups !`;
 
         game.boardDiv.appendChild(result);
+    },
+
+    replay: () => {
+        document.getElementById('replay').classList.add('hidden');
+        game.gameOver = false;
+        game.player.x = 0;
+        game.player.y = 0;
+        game.numberOfMoves = 0;
+        game.player.direction = 'right';
+        game.redrawBoard();
     },
 
 };
