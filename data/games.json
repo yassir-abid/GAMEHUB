@@ -19,7 +19,7 @@
     },
     {
         "name": "rpg",
-        "title": "Jeu RPG",
+        "title": "RPG Game",
         "cssFile":"rpg.css", 
         "jsFile": "rpg.js"
     }
