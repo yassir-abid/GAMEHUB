@@ -1,0 +1,6 @@
+.app {
+    margin: 15px auto;
+    width: 45vw;
+    text-align: center;
+    flex-grow: 1;
+}
