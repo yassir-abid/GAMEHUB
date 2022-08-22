@@ -13,6 +13,10 @@ const game = {
         y: 3,
     },
 
+    numberOfMoves: 0,
+
+    gameOver: false,
+
     init: () => {
         game.listenKeyboardEvents();
         game.drawBoard();
@@ -48,6 +52,7 @@ const game = {
                 row.appendChild(cell);
             }
         }
+        game.isGameOver();
     },
 
     listenKeyboardEvents: () => {
@@ -63,6 +68,12 @@ const game = {
     },
 
     turnLeft: () => {
+        if (game.gameOver) {
+            return;
+        }
+
+        game.numberOfMoves += 1;
+
         if (game.player.direction === 'up') {
             game.player.direction = 'left';
         } else if (game.player.direction === 'right') {
@@ -77,6 +88,12 @@ const game = {
     },
 
     turnRight: () => {
+        if (game.gameOver) {
+            return;
+        }
+
+        game.numberOfMoves += 1;
+
         if (game.player.direction === 'up') {
             game.player.direction = 'right';
         } else if (game.player.direction === 'right') {
@@ -91,6 +108,12 @@ const game = {
     },
 
     moveForward: () => {
+        if (game.gameOver) {
+            return;
+        }
+
+        game.numberOfMoves += 1;
+
         if (game.player.direction === 'up' && game.player.y > 0) {
             game.player.y -= 1;
         } else if (game.player.direction === 'right' && game.player.x < 5) {
@@ -111,6 +134,22 @@ const game = {
 
     clearBoard: () => {
         game.boardDiv.innerHTML = '';
+    },
+
+    isGameOver: () => {
+        if (game.player.x === game.targetCell.x && game.player.y === game.targetCell.y) {
+            setTimeout(game.displayResult, 100);
+            game.gameOver = true;
+        }
+    },
+
+    displayResult() {
+        const result = document.createElement('div');
+
+        result.className = 'result';
+        result.textContent = `Gagné en ${game.numberOfMoves} coups !`;
+
+        game.boardDiv.appendChild(result);
     },
 
 };

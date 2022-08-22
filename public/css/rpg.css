@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    position: relative;
 }
 
 .row {
@@ -45,4 +46,17 @@
 
 .player--left {
     background-position-y: -32px;
-} 
+}
+
+.result {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+    font-size: 3em;
+    padding: .3em 0;
+    text-align: center;
+    animation: fade .4s ease 0s 1;
+}
