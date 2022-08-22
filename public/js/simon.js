@@ -2,6 +2,8 @@ const game = {
     colors: ['red', 'green', 'blue', 'yellow'],
 
     sequence: [],
+    indice: 0,
+    isAllowedToPlay: false,
 
     init: () => {
         game.drawCells();
@@ -16,6 +18,22 @@ const game = {
             cell.id = color;
             cell.style.backgroundColor = color;
             simonDiv.appendChild(cell);
+            cell.addEventListener('click', () => {
+                if (!game.isAllowedToPlay) {
+                    return;
+                }
+                game.bumpCell(color);
+                if (color === game.sequence[game.indice]) {
+                    if (game.indice < game.sequence.length - 1) {
+                        game.indice += 1;
+                    } else {
+                        game.showMessage('Gagné!');
+                        game.isAllowedToPlay = false;
+                    }
+                } else {
+                    game.gameOver();
+                }
+            });
         });
     },
 
@@ -31,11 +49,13 @@ const game = {
 
     simonSays: (sequence) => {
         if (sequence && sequence.length) {
+            game.isAllowedToPlay = false;
             game.showMessage('Mémorisez la séquence');
             setTimeout(game.bumpCell, 500, sequence[0]);
             setTimeout(game.simonSays, 850, sequence.slice(1));
         } else {
-            // player turn
+            game.isAllowedToPlay = true;
+            game.showMessage('Reproduisez la séquence');
         }
     },
 
@@ -50,6 +70,12 @@ const game = {
         document.getElementById('welcome').classList.add('hidden');
         document.getElementById('message').classList.remove('hidden');
         document.getElementById('message').innerHTML = message;
+    },
+
+    gameOver: () => {
+        game.isAllowedToPlay = false;
+        game.showMessage(`Partie terminée. Votre score: ${game.sequence.length}`);
+        game.sequence = [];
     },
 };
 
