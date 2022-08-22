@@ -4,3 +4,15 @@
     text-align: center;
     flex-grow: 1;
 }
+
+.cell {
+    width: 15vw;
+    height: 15vw;
+    min-height: 50px;
+    min-width: 50px;
+    display: inline-block;
+    margin: 3px;
+    border: 0px solid white;
+    box-sizing: border-box;
+    transition: border ease .1s;
+}
