@@ -5,7 +5,7 @@ const game = {
 
     init: () => {
         game.drawCells();
-        game.newGame();
+        document.getElementById('play').addEventListener('click', game.newGame);
     },
 
     drawCells: () => {
@@ -31,6 +31,7 @@ const game = {
 
     simonSays: (sequence) => {
         if (sequence && sequence.length) {
+            game.showMessage('Mémorisez la séquence');
             setTimeout(game.bumpCell, 500, sequence[0]);
             setTimeout(game.simonSays, 850, sequence.slice(1));
         } else {
@@ -43,6 +44,12 @@ const game = {
         setTimeout(() => {
             document.getElementById(color).style.borderWidth = '0';
         }, 150);
+    },
+
+    showMessage: (message) => {
+        document.getElementById('welcome').classList.add('hidden');
+        document.getElementById('message').classList.remove('hidden');
+        document.getElementById('message').innerHTML = message;
     },
 };
 

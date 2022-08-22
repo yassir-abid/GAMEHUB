@@ -16,3 +16,40 @@
     box-sizing: border-box;
     transition: border ease .1s;
 }
+
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6em;
+}
+
+.btn {
+    padding: 1em 2em;
+    background: #fff;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    border-bottom: 4px solid #ad5304;
+}
+
+.btn:hover {
+    margin-top: 1px;
+    border-bottom-width: 3px;
+}
+
+.message {
+    width: 100%;
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+    font-size: 2em;
+    padding: .3em 0;
+    text-align: center;
+    animation: fade .4s ease 0s 1;
+}
+
+.hidden {
+    display: none;
+}
