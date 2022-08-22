@@ -5,3 +5,44 @@
     align-items: center;
     flex-grow: 1;
 }
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
+.targetCell {
+    background-color: #008000;
+}
+
+.player {
+    background-image: url('/images/rpg-sprite.png');
+    width: 28px;
+    height: 32px;
+    margin: 20px;
+    background-repeat: no-repeat;
+    background-position: top;
+    transform: scale(1.8);
+}
+
+.player--up {
+    background-position-y: -96px;
+}
+
+.player--right {
+    background-position-y: -64px;
+}
+
+.player--down {
+    background-position-y: 0px;
+}
+
+.player--left {
+    background-position-y: -32px;
+} 
