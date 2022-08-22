@@ -2,9 +2,6 @@ const game = {
 
     invaderDiv: document.getElementById('app'),
 
-    gridSize: 8,
-    cellSize: 30,
-
     styles: [
         'plain',
         'empty',
@@ -14,11 +11,12 @@ const game = {
     selectedColor: 'plain',
 
     init: () => {
-        game.createGrid();
+        game.createGrid(8, 30);
         game.initPalette();
+        game.handleForm();
     },
 
-    createGrid: () => {
+    createGrid: (gridSize, cellSize) => {
         game.invaderDiv.innerHTML = '';
 
         const table = document.createElement('table');
@@ -31,16 +29,16 @@ const game = {
             event.target.classList.toggle(game.selectedColor);
         });
 
-        for (let i = 0; i < game.gridSize; i += 1) {
+        for (let i = 0; i < gridSize; i += 1) {
             const tr = document.createElement('tr');
 
             table.appendChild(tr);
 
-            for (let j = 0; j < game.gridSize; j += 1) {
+            for (let j = 0; j < gridSize; j += 1) {
                 const td = document.createElement('td');
 
-                td.style.width = `${game.cellSize}px`;
-                td.style.height = `${game.cellSize}px`;
+                td.style.width = `${cellSize}px`;
+                td.style.height = `${cellSize}px`;
 
                 tr.appendChild(td);
             }
@@ -59,6 +57,19 @@ const game = {
 
                     event.target.classList.add('palette__button--active');
                 });
+        });
+    },
+
+    handleForm: () => {
+        const form = document.getElementById('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const userGridSize = event.target[0].valueAsNumber;
+            const userPixelSize = event.target[1].valueAsNumber;
+
+            game.createGrid(userGridSize, userPixelSize);
         });
     },
 };

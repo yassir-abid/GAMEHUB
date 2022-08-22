@@ -2,6 +2,11 @@
 
     <%- include("./partials/titleGame") %>
 
+        <form id="form" class="configuration">
+            <input type="number" min="2" max="12" placeholder="Taille de la grille (entre 2 et 12)">
+            <input type="number" min="10" max="40" placeholder="Taille de la pixel (entre 10 et 40)">
+            <button>Valider</button>
+        </form>
         <div id="app" class="app">
         </div>
         <div class="palette">

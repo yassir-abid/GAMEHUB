@@ -60,3 +60,32 @@ td {
 .highlight {
     background-color: #79ea83;
 } 
+
+.configuration {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 2rem 0;
+}
+
+.configuration input:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.configuration input {
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    width: 15rem;
+    margin-right: 2px;
+}
+
+.configuration button {
+    background-color: #697342;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0 10px 10px 0;
+} 
