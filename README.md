@@ -2,7 +2,7 @@
 
 This project presents different games: Dice Roller, Invader, the famous Simon Says and a RPG game.
 
-## [See app website]()
+## [See app website](https://app-gamehub.herokuapp.com/)
 
 ## Technical stack
 
