@@ -6,7 +6,7 @@ This project presents different games: Dice Roller, Invader, the famous Simon Sa
 
 ## Technical stack
 
-This application is based on a monolithic architecture using the MVC (Model-View-Controller) design pattern.
+This application is based on a monolithic architecture.
 
 ### Back
 - Node JS
