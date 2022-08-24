@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/yassir-abid/GAMEHUB#readme",
   "dependencies": {
+    "bunyan": "^1.8.15",
     "debug": "^4.3.4",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
