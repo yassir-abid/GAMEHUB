@@ -6,6 +6,9 @@
     <title>GameHub</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
+    <% if (locals.error) { %>
+        <link rel="stylesheet" href="/css/error.css">
+        <% } %>
     <% if (locals.searchedGame) { %>
         <link rel="stylesheet" href="/css/<%= locals.searchedGame.cssFile %>">
         <% } %>

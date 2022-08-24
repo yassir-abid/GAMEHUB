@@ -1,0 +1,19 @@
+<%- include("./partials/header") %>
+
+    <div class="site">
+        <div class="sketch">
+            <div class="bee-sketch error--red"></div>
+            <div class="bee-sketch error--blue"></div>
+        </div>
+
+        <h1 class="error__title">
+            <% if (locals.error.statusCode===404) { %>
+                <%= locals.error.statusCode %>
+                    <% } %>
+                        <small>
+                            <%= locals.error.message %>
+                        </small>
+        </h1>
+    </div>
+
+    <%- include("./partials/footer") %>
